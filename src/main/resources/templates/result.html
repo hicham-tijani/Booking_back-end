@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>SIGNUP COMPLETED</h1>
+<p th:text="'username: ' + *{user.username}" />
+<p th:text="'name: ' + *{user.name}" />
+<p th:text="'surname: ' + *{user.surname}" />
+<p th:text="'email: ' + *{user.email}" />
+<p th:text="'pwd: ' + *{user.pwd}" />
+
+
+<a href="/reservation">Submit another message</a>
+</body>
+</html>

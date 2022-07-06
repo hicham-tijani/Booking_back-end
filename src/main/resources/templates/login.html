@@ -1,0 +1,23 @@
+<html>
+<body>
+<form th:action="@{/submitlogin/}" th:object="${user}" method="post">
+<table>
+<tr><td>Autenticazione</td></tr>
+<tr><td>Username:</td></tr>
+<tr>
+<td><input type="text" th:field="*{username}" /></td>
+<td th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</td>
+</tr>
+
+<tr><td>password:</td></tr>
+<tr>
+<td><input type="password" th:field="*{password}" /></td>
+<td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
+</tr>
+<tr><td><input type="submit" value="login"></td></tr>
+<tr><td><a href="/registra">Registrazione</a></td></tr>
+<tr><td><a href="/listautenti">Lista utenti</a></td></tr>
+</table>
+</form>
+</body>
+</html>
