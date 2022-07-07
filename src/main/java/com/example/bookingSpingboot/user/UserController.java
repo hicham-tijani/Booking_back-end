@@ -36,15 +36,22 @@ public class UserController {
     public String autenticazione(User user) {
         return "login";
     }
-    @PostMapping("/submitlogin")
 
+    @PostMapping("/submitlogin")
     public String postLogin(@RequestParam("username") String username, @RequestParam("pwd") String pwd, Model model, HttpSession session) {
         User user = userService.loginUser(username, pwd);
         if(user == null)
-            return "redirect:/user/login";
+            return "/login";
         else {
+            session.setAttribute("loggedUser", user);
             System.out.println("login funziona");
-            return "redirect:/";
+            return "/homePage";
         }
+    }
+    //LOGOUT
+    @RequestMapping("/logout")
+    public String logout(HttpSession session) {
+        session.setAttribute("loggedUser", null);
+        return "redirect:/";
     }
 }
