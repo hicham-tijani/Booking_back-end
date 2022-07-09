@@ -505,7 +505,7 @@ button {
 .profile-text, .profile-subtext {
   font-size: 15px;
   line-height: 16px;
-  color: var(--secondary-color);
+  color: #c4d3f6;
   margin: 0 0 8px 0;
 }
 
@@ -1028,3 +1028,4 @@ iframe {
 .plus{
     border-radius:50px
      }
+
