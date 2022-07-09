@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/searchForm}" th:object="${flight}" method="post">
+    <input type="text" name="placeDeparture" th:value="*{placeDeparture}"/>
+    <input type="text" name="placeArrive" th:value="*{placeArrive}"/>
+    <input type="date" name="dateDeparture" th:value="*{dateDeparture}"/>
+    <input type="date" name="dateArrive" th:value="*{dateArrive}"/>
+    <input type="submit" value="search"/>
+</form>
+<a href="/homepage">
+    HOMEPAGE
+</a>
+</body>
+</html>

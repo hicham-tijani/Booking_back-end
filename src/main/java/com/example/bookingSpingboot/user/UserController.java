@@ -67,4 +67,5 @@ public class UserController {
         model.addAttribute("username", user.getUsername());
         return "homePage";
     }
+
 }
