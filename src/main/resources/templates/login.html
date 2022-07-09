@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>LOGIN</h1>
-<form th:action="@{/submitlogin}" th:object="${user}" method="post">
+<form th:action="@{/login}" th:object="${user}" method="post">
     <input type="username" name="username" th:value="*{username}"/>
     <input type="password" name="pwd" th:value="*{pwd}"/>
     <input type="submit" value="login"/>

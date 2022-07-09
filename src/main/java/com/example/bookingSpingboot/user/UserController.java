@@ -9,15 +9,19 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class UserController {
+
     private final UserService userService;
 
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
+    //INDEX
     @GetMapping("/")
-    public String getHome() {
-        return "index";
+    public String getHome(HttpSession session) {
+        User user = (User) session.getAttribute("loggedUser");
+        if(user == null) return "index";
+        return "homePage";
     }
 
     //REGISTRAZIONE
@@ -31,27 +35,36 @@ public class UserController {
         userService.saveUser(user);
         return  "result";
     }
+
     //LOGIN
     @GetMapping("/login")
     public String autenticazione(User user) {
         return "login";
     }
 
-    @PostMapping("/submitlogin")
-    public String postLogin(@RequestParam("username") String username, @RequestParam("pwd") String pwd, Model model, HttpSession session) {
+    @PostMapping("/login")
+    public String postLogin(@RequestParam("username") String username, @RequestParam("pwd") String pwd, HttpSession session) {
         User user = userService.loginUser(username, pwd);
         if(user == null)
-            return "/login";
+            return "login";
         else {
             session.setAttribute("loggedUser", user);
-            System.out.println("login funziona");
-            return "/homePage";
+            return "redirect:homepage";
         }
     }
+
     //LOGOUT
     @RequestMapping("/logout")
     public String logout(HttpSession session) {
         session.setAttribute("loggedUser", null);
         return "redirect:/";
+    }
+
+    //HOMEPAGE
+    @GetMapping("/homepage")
+    public String getHomePage(HttpSession session, Model model){
+        User user = (User) session.getAttribute("loggedUser");
+        model.addAttribute("username", user.getUsername());
+        return "homePage";
     }
 }
