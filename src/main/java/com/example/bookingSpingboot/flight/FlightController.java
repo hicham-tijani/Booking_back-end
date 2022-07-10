@@ -2,8 +2,11 @@ package com.example.bookingSpingboot.flight;
 
 import org.springframework.stereotype.Controller;
 
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 public class FlightController {
@@ -19,13 +22,10 @@ public class FlightController {
         return "searchFlightForm";
     }
 
-    @PostMapping("/searchForm")
-    public String postForm(Flight flight) {
-        return "redirect:result";
-    }
-
-    @GetMapping("/result")
-    public String getRuslt(Flight flight) {
+    @GetMapping("/flights")
+    public String postForm(Model model) {
+        List<Flight> flightList = flightService.findAll();
+        model.addAttribute("flightList", flightList);
         return "result";
     }
 }
