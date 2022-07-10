@@ -1,4 +1,5 @@
 package com.example.bookingSpingboot.flight;
+
 import org.springframework.stereotype.Service;
 
 @Service

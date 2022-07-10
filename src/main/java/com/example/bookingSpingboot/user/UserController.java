@@ -1,6 +1,5 @@
 package com.example.bookingSpingboot.user;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +32,7 @@ public class UserController {
     @PostMapping("/signUp")
     public String postRegistra( User user) {
         userService.saveUser(user);
-        return  "result";
+        return  "redirect:homepage";
     }
 
     //LOGIN

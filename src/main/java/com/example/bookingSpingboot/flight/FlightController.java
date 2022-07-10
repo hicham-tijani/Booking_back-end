@@ -21,6 +21,11 @@ public class FlightController {
 
     @PostMapping("/searchForm")
     public String postForm(Flight flight) {
+        return "redirect:result";
+    }
+
+    @GetMapping("/result")
+    public String getRuslt(Flight flight) {
         return "result";
     }
 }
