@@ -7,11 +7,11 @@
 <body>
 <h1>SIGNUP</h1>
 <form th:action="@{/signUp}" th:object="${user}" method="post">
-    <input type="text" name="username" th:field="*{username}"/>-
-    <input type="text" name="name" th:field="*{name}"/>
-    <input type="text" name="surname" th:value="*{surname}"/>
-    <input type="email" name="email" th:value="*{email}"/>
-    <input type="password" name="pwd" th:value="*{pwd}"/>
+    <input type="text" name="username" placeholder="username" th:field="*{username}"/>-
+    <input type="text" name="name" placeholder="name" th:field="*{name}"/>
+    <input type="text" name="surname" placeholder="surname" th:value="*{surname}"/>
+    <input type="email" name="email" placeholder="email" th:value="*{email}"/>
+    <input type="password" name="pwd" placeholder="password" th:value="*{pwd}"/>
     <input type="submit" value="signup"/>
 </form>
 </body>
