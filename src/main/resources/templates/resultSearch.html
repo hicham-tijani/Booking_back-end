@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<tbody>
+<tbody>
+<div th:each="flight, iterStat:${flights}">
+    <tr style="background-color: #fdfdfd">
+        <th scope="row" th:text="${flight.placeDeparture}">Dark</th>
+        <td th:text="${flight.placeArrive}"></td>
+        <td th:text="${flight.dateDeparture}"></td>
+        <td th:text="${flight.dateDeparture}"></td>
+    </tr>
+</div>
+</tbody>
+</table>
+</body>
+</html>
