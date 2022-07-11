@@ -32,11 +32,11 @@ public class FlightController {
                            @RequestParam("dateDeparture")
                                @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
                                        LocalDate dateDeparture,
-                           @RequestParam("dateArrive")
+                           @RequestParam("dateReturn")
                                @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-                                       LocalDate dateArrive,
+                                       LocalDate dateReturn,
                            Model model) {
-        List<Flight> flights = flightService.getFlightByPlaceAndDate(placeDeparture, placeArrive, dateDeparture, dateArrive);
+        List<Flight> flights = flightService.getFlightByPlaceAndDate(placeDeparture, placeArrive, dateDeparture, dateReturn);
         model.addAttribute("flights", flights);
         return "resultSearch";
     }

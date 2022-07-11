@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface FlightRepository extends JpaRepository<Flight, Long> {
-    List<Flight> findAllByPlaceDepartureEqualsAndPlaceArriveEqualsAndDateDepartureEqualsAndDateArriveEquals(
+    List<Flight> findAllByPlaceDepartureEqualsAndPlaceArriveEqualsAndDateDepartureEqualsAndDateReturnEquals(
             String placeDeparture,
             String placeArrive,
             LocalDate dateDeparture,
