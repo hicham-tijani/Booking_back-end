@@ -17,10 +17,7 @@ public class FlightService {
         return this.flightRepository.findAll();
     }
 
-    public List<Flight> getFlightByPlaceAndDate(String placeDeparture,
-                                                String placeArrive,
-                                                LocalDate dateDeparture,
-                                                LocalDate dateReturn) {
+    public List<Flight> getFlightByPlaceAndDate(String placeDeparture, String placeArrive, LocalDate dateDeparture, LocalDate dateReturn) {
         return this.flightRepository.findAllByPlaceDepartureEqualsAndPlaceArriveEqualsAndDateDepartureEqualsAndDateReturnEquals(placeDeparture, placeArrive, dateDeparture, dateReturn);
     }
 }
