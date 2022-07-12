@@ -1,5 +1,6 @@
 package com.example.bookingSpingboot.flight;
 
+import com.example.bookingSpingboot.user.User;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -47,5 +49,15 @@ public class FlightController {
         List<Flight> flightList = flightService.findAll();
         model.addAttribute("flightList", flightList);
         return "result";
+    }
+
+    //confirm booking
+    @GetMapping("/confirmBooking")
+    public String getConfirmBookPage(HttpSession session) {
+        User user = (User) session.getAttribute("loggedUser");
+        System.out.println(user.getIdUser());
+        Flight flight = session.getAttribute("idFlight");
+        System.out.println(flight.getIdFlight());
+        return "confirmBooking";
     }
 }

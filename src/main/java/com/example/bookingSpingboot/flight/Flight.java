@@ -1,11 +1,15 @@
 package com.example.bookingSpingboot.flight;
 
 
+import com.example.bookingSpingboot.user.User;
 import com.sun.istack.NotNull;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "flight")
@@ -23,6 +27,7 @@ public class Flight {
     @NotNull
     private String placeArrive;
 
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     @Column(name = "date_departure")
     @NotNull
     private LocalDate dateDeparture;
@@ -31,6 +36,7 @@ public class Flight {
     @NotNull
     private LocalTime timeDeparture;
 
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     @Column(name = "date_return")
     @NotNull
     private LocalDate dateReturn;
@@ -38,6 +44,9 @@ public class Flight {
     @Column(name = "time_return")
     @NotNull
     private LocalTime timeReturn;
+
+    @ManyToMany(mappedBy = "flightSet")
+    private Set<User> userSet = new HashSet<>();
 
 
     public Flight() {}
@@ -106,5 +115,13 @@ public class Flight {
 
     public void setTimeReturn(LocalTime timeReturn) {
         this.timeReturn = timeReturn;
+    }
+
+    public Set<User> getUserSet() {
+        return userSet;
+    }
+
+    public void setUserSet(Set<User> userSet) {
+        this.userSet = userSet;
     }
 }

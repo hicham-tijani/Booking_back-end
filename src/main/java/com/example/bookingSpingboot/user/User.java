@@ -1,6 +1,10 @@
 package com.example.bookingSpingboot.user;
 
+import com.example.bookingSpingboot.flight.Flight;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -18,10 +22,18 @@ public class User {
     private String email;
     @Column(name = "pwd", length = 45)
     private String pwd;
+    @ManyToMany
+    @JoinTable(
+            name = "Reservation",
+            joinColumns = @JoinColumn(name = "id_user"),
+            inverseJoinColumns = @JoinColumn(name = "id_flight")
+    )
+    private Set<Flight> flightSet = new HashSet<>();
 
     public User() {}
 
-    public User(String username, String name, String surname, String email, String pwd) {
+    public User(Long idUser, String username, String name, String surname, String email, String pwd) {
+        this.idUser = idUser;
         this.username = username;
         this.name = name;
         this.surname = surname;
@@ -75,6 +87,14 @@ public class User {
 
     public void setPwd(String pwd) {
         this.pwd = pwd;
+    }
+
+    public Set<Flight> getFlightSet() {
+        return flightSet;
+    }
+
+    public void setFlightSet(Set<Flight> flightSet) {
+        this.flightSet = flightSet;
     }
 
     @Override

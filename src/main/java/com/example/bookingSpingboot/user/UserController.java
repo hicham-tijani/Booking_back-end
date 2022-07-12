@@ -30,9 +30,9 @@ public class UserController {
     }
 
     @PostMapping("/signUp")
-    public String postRegistra( User user) {
+    public String postRegistra(User user) {
         userService.saveUser(user);
-        return  "redirect:homepage";
+        return  "redirect:login";
     }
 
     //LOGIN
