@@ -56,7 +56,7 @@ public class FlightController {
     public String getConfirmBookPage(HttpSession session) {
         User user = (User) session.getAttribute("loggedUser");
         System.out.println(user.getIdUser());
-        Flight flight = session.getAttribute("idFlight");
+        Flight flight = (Flight) session.getAttribute("idFlight");
         System.out.println(flight.getIdFlight());
         return "confirmBooking";
     }
